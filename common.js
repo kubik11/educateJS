@@ -118,3 +118,40 @@
 
   }
   extractNewData();
+
+
+function work(){
+
+var list = document.querySelector('.price');
+var totalBox = document.querySelector('.caution');
+var total = 0;
+ list.innerHTML = '';
+ totalBox.textContent = '';
+//number 1
+var products =  [ 'Underpants:6.99',
+                'Socks:5.99',
+                'T-shirt:14.99',
+                'Trousers:31.99',
+                'Shoes:23.99'];
+var price = [];
+var nameOfproduct = [];
+for (var i = 0; i < products.length; i++) { // number 2
+  // number 3
+  var separProducts = products[i].split(':');
+  price[i] = Number(separProducts[1]);
+  nameOfproduct[i] = separProducts[0];
+  // number 4
+  
+  // number 5
+  var itemText = 0;
+  itemText += price[i];
+  var listItem = document.createElement('li');
+  listItem.textContent = itemText;
+  list.appendChild(listItem);
+}
+  total = itemText;
+  alert(typeof(price[0]));
+  totalBox.textContent = 'Total: $' + total.toFixed(2);
+
+}
+work();

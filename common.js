@@ -84,3 +84,37 @@
   }
 
   sortList();
+
+
+  function extractNewData(){
+    var stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+                'GNF576746573fhdg4737dh4;Greenfield',
+                'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+                'SYB4f65hf75f736463;Stalybridge',
+                'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'];
+
+    var currentSplited = stations.join(";");
+    var separateArray = currentSplited.split(";");
+    var newArr = [];
+    var secArr =[];
+      for(var i = 0; i < stations.length; i++){  
+        
+        var current = stations[i].slice(0, 3);
+        newArr.push(current);
+    }
+
+      for(var j = 0 ; j < separateArray.length; j++ ){
+       if (j%2 != 0 && j!= 0){
+        secArr.push(separateArray[j]);
+        }
+     }
+   //  alert(secArr);
+     for( var a = 0; a < secArr.length; a ++){
+        var newList = document.createElement('li');
+        newList.textContent += newArr[a] + " : " +  secArr[a] + " ";
+
+        list.appendChild(newList);
+    }
+
+  }
+  extractNewData();

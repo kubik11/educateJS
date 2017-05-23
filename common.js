@@ -143,13 +143,14 @@ for (var i = 0; i < products.length; i++) { // number 2
   // number 4
   
   // number 5
-  var itemText = 0;
-  itemText += price[i];
+  var itemText = nameOfproduct[i] + " - $" + price[i];
+  //itemText += price[i];
   var listItem = document.createElement('li');
   listItem.textContent = itemText;
   list.appendChild(listItem);
+  total += price[i];
 }
-  total = itemText;
+  
   alert(typeof(price[0]));
   totalBox.textContent = 'Total: $' + total.toFixed(2);
 

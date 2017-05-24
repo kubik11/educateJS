@@ -1,4 +1,7 @@
 
+  
+
+
   var guesses = document.querySelector('.guesses');
   var lastResult = document.querySelector('.lastResult');
   var lowOrHi = document.querySelector('.lowOrHi');
@@ -156,3 +159,66 @@ for (var i = 0; i < products.length; i++) { // number 2
 
 }
 work();
+
+  function chat(){
+
+  var list = document.querySelector('.out ul');
+  var searchInput = document.querySelector('.out input');
+  var searchBtn = document.querySelector('.out button');
+
+  list.innerHTML = '';
+
+  var myHistory = [];
+
+  searchBtn.addEventListener('click',start );
+  searchBtn.onkeypress = function(e){
+   // var key = e.keyCode;
+  //  if(key == 13){
+      start();
+    //}
+  }
+
+  function press(e){
+   var key = e.keyCode || e.which;
+    if(key == 13){
+      start();
+    }
+  }
+
+  function start() {
+  // we will only allow a term to be entered if the search input isn't empty
+  if (searchInput.value !== '') {
+    // number 1
+  // empty the list so that we don't display duplicate entries
+    // the display is regenerated every time a search term is entered.
+
+    var current = searchInput.value;
+    list.innerHTML = '';
+    myHistory.unshift(current);
+   
+    // loop through the array, and display all the search terms in the list
+    for (var i = 0; i < myHistory.length; i++) {
+       
+       var itemText = myHistory[i];
+       var listItem = document.createElement('li');
+       listItem.textContent = itemText;
+       list.appendChild(listItem);
+    
+    }
+     if (myHistory.length >= 5) {
+      // number 2
+   
+      myHistory.pop();
+    
+      }
+
+    // If the array length is 5 or more, remove the oldest search term
+   
+    // empty the search input and focus it, ready for the next term to be entered
+    searchInput.value = '';
+    searchInput.focus();
+    }
+  }
+}
+chat();
+

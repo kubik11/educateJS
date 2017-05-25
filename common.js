@@ -28,18 +28,24 @@ function result() {
   var itemX = randomValueFromArray(insertX);
   var itemY = randomValueFromArray(insertY);
   var itemZ = randomValueFromArray(insertZ);
-
-  if(customName.value != '') {
+  newStory = newStory.replace(/:insertx:/g , itemX);
+  newStory = newStory.replace(/:inserty:/g , itemY);
+  newStory = newStory.replace(/:insertz:/g , itemZ);
+ 
+    if(customName.value != '') {
     var name = customName.value;
-    
-  }
+    newStory = newStory.replace(/Bob/g , name);
+    }
 
   if(document.getElementById("uk").checked) {
     var weight = Math.round(300);
     var temperature =  Math.round(94);
-    
+    var ukWeight = Math.round(weight/14)+ " " + "stone";
+    var ukTemperature = Math.round(temperature/2)+ " " + "centigrade";
+    newStory = newStory.replace(/94 farenheit/g , ukTemperature);
+    newStory = newStory.replace(/300 pounds/g , ukWeight);
   }
-
-  story.textContent = ;
+ //alert(newStory);
+  story.textContent = newStory;
   story.style.visibility = 'visible';
 }

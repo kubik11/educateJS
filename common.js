@@ -49,3 +49,87 @@ function result() {
   story.textContent = newStory;
   story.style.visibility = 'visible';
 }
+
+
+
+
+var select = document.querySelector('.select');
+var list = document.querySelector('.ul');
+var h1 = document.querySelector('.h1');
+
+select.onchange = function() {
+  var choice = select.value;
+  var days;
+  switch(choice){
+    case "January": 
+    days = 31;
+    break;
+    case "February": 
+    days = 29;
+    break;
+    case "March": 
+    days = 31;
+    break;
+    case "April": 
+    days = 30;
+    break;
+    case "May": 
+    days = 31;
+    break;
+    case "June": 
+    days = 30;
+    break;
+    case "July": 
+    days = 31;
+    break;
+    case "August": 
+    days = 31;
+    break;
+    case "September": 
+    days = 30;
+    break;
+    case "October": 
+    days = 30;
+    break;
+    case "November": 
+    days = 30;
+    break;
+    case "December": 
+    days = 31;
+    break;
+  }
+  createCalendar(days, choice);
+}
+
+function createCalendar(days, choice) {
+  list.innerHTML = '';
+  h1.textContent = choice;
+  for (var i = 1; i <= days; i++) {
+    var listItem = document.createElement('li');
+    listItem.classList.add("listLi");
+    //listItem.style.width = widthElement;
+    listItem.style.display = 'inline-block';
+    listItem.style.liststyle = 'none';
+    listItem.style.background = '#456364';
+    listItem.style.border = '1px solid #000';
+    listItem.style.padding = '20px';
+    listItem.textContent = i;
+    list.appendChild(listItem);
+  }
+   var listLi = document.querySelectorAll('.listLi');
+  //var myA = ['1','2','3','4'];
+
+   var widthElement = function(arg){
+     var arr = [].reduce.call(arg, function(elem, next){
+      var a = getComputedStyle(elem).width;
+      var b = getComputedStyle(next).width;
+        return Math.max(a, b);
+     },0);
+     return arr;
+    }
+
+    alert(widthElement(listLi));
+
+}
+
+createCalendar(31,'January');

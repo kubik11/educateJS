@@ -60,48 +60,61 @@ var h1 = document.querySelector('.h1');
 select.onchange = function() {
   var choice = select.value;
   var days;
+  var color;
   switch(choice){
     case "January": 
     days = 31;
+    color = '#456364';
     break;
     case "February": 
     days = 29;
+    color = '#565678';
     break;
     case "March": 
     days = 31;
+    color = '#987633';
     break;
     case "April": 
     days = 30;
+    color = '#983333';
     break;
     case "May": 
     days = 31;
+    color = '#935555';
     break;
     case "June": 
     days = 30;
+    color = '#203984';
     break;
     case "July": 
     days = 31;
+    color = '#903984';
     break;
     case "August": 
     days = 31;
+    color = '#9dcde4';
     break;
     case "September": 
     days = 30;
+    color = '#8cdc56';
     break;
     case "October": 
     days = 30;
+    color = '#8ffed3';
     break;
     case "November": 
     days = 30;
+    color = '#cdcdcd';
     break;
     case "December": 
     days = 31;
+    color = '#434343';
     break;
   }
-  createCalendar(days, choice);
+  createCalendar(days, choice, color);
 }
 
-function createCalendar(days, choice) {
+function createCalendar(days, choice, color) {
   list.innerHTML = '';
   h1.textContent = choice;
   for (var i = 1; i <= days; i++) {
@@ -110,7 +123,7 @@ function createCalendar(days, choice) {
     //listItem.style.width = widthElement;
     listItem.style.display = 'inline-block';
     listItem.style.liststyle = 'none';
-    listItem.style.background = '#456364';
+    listItem.style.background = color;
     listItem.style.border = '1px solid #000';
     listItem.style.padding = '20px';
     listItem.textContent = i;

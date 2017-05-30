@@ -129,7 +129,7 @@ function createCalendar(days, choice, color) {
     listItem.textContent = i;
     list.appendChild(listItem);
   }
-   var listLi = document.querySelectorAll('.listLi');
+ /*  var listLi = document.querySelectorAll('.listLi');
   //var myA = ['1','2','3','4'];
 
    var widthElement = function(arg){
@@ -142,7 +142,82 @@ function createCalendar(days, choice, color) {
     }
 
     alert(widthElement(listLi));
-
+*/
 }
 
 createCalendar(31,'January');
+
+
+
+
+var blastOff = document.querySelector('.blastOff');
+var blastBtn = document.querySelector('.blast');
+
+blastBtn.addEventListener('click', StartBlast);
+
+
+function StartBlast(){
+ blastOff.innerHTML = ' ';
+  for( var i = 10; i >= 0; i--){
+    var para = document.createElement('p');
+    para.textContent = 'Blsat off' + i + '';
+    //setTimeout(StartBlast, 5000);
+    blastOff.appendChild(para);
+  }
+}
+
+
+//List of guests who I have to sort out
+
+
+var people = ['Chris', 'Anne', 'Colin', 'Terri', 'Phil', 'Lola', 'Sam', 'Kay', 'Bruce'];
+var counter = 0;
+var admitted = document.querySelector('.admitted');
+var refused = document.querySelector('.refused');
+var sort = document.querySelector('.sort');
+var sortSub = document.querySelector('.sortSub');
+admitted.textContent = 'Admit: ';
+refused.textContent = 'Refuse: ';
+
+//sortSub.onkeypress = function(e) {
+ // if(e.keyKode  < 100){
+ //   sortTheList();
+ // }
+//}
+sortSub.addEventListener('click', sortTheList);
+var refusedList = [];
+var admittedList = [];
+
+function sortTheList(){
+var guest = sort.value;
+sort.focus();
+sort.value = '';
+counter += 1;
+
+  for( var i = 0; i < people.length; i ++){
+    
+    if(people[i].indexOf(guest) != -1 && refusedList.indexOf(guest) == -1 ){
+       refusedList.push(guest);
+       refused.textContent +=' ' + people[i] + ', ';
+
+      /* if( i == people.length - 1){
+          refused.textContent +=' ' + people[i] + '. ';
+       }*/
+    }
+
+       else if(people.indexOf(guest) == -1 && admittedList.indexOf(guest) == -1 ){
+         admittedList.push(guest)
+         if(admittedList.length == 10){
+          admitted.textContent +=' ' + guest + '. ';
+          
+          }
+         admitted.textContent +=' ' + guest + ', ';
+      break;
+    }
+
+  }
+
+}
+
+// refused.textContent += ;
+// admitted.textContent += ;

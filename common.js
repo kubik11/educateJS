@@ -221,3 +221,40 @@ counter += 1;
 
 // refused.textContent += ;
 // admitted.textContent += ;
+
+var display = document.querySelector('.display');
+display.addEventListener('click', displayMessage);
+
+function displayMessage(msgText, msgType) {
+var html = document.querySelector('html');
+var panel = document.createElement('div');
+var msg = document.createElement('p');
+if(msgType == "warning"){
+  msg.style.backgroundImage = 'url(warning.png)';
+  panel.style.backgroundColor = 'red';
+}
+ else if (msgType == "chat"){
+  msg.style.backgroundImage = 'url(chat.png)';
+  panel.style.backgroundColor = 'aqua';
+ }
+ else{
+  panel.style.backgroundColor = '#dcdcdc';
+ }
+
+ 
+panel.setAttribute('class', 'msgBox');
+html.appendChild(panel);
+
+
+msg.textContent = msgText;
+panel.appendChild(msg);
+
+var closeBtn = document.createElement('button');
+closeBtn.textContent = 'x';
+panel.appendChild(closeBtn);
+
+closeBtn.onclick = function() {
+  panel.parentNode.removeChild(panel);
+  }
+}
+

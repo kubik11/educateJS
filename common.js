@@ -258,3 +258,67 @@ closeBtn.onclick = function() {
   }
 }
 
+    var numberInput = document.querySelector('.numberInput');
+    var numberP = document.querySelector('.numberP');
+
+
+    numberInput.onchange = calculate;
+
+    function calculate(){
+      var num = numberInput.value;
+
+      if (isNaN(num)){
+        numberP.textContent = 'Please insert only digit value';
+      }
+
+      else{
+        numberP.textContent = 'The squre equal :' + square(num)+'.'+ 'The cube equal :'
+                              + cube(num)+' . ' + 'The factorial equal :' + fact(num);
+      }
+    }
+
+    function square(num){
+      return num * num;
+    }
+
+    function cube(num){
+      return num * num * num;
+    }
+
+    function fact(num){
+      var counter = num;
+      for(var i = 1; i < counter; counter -- ){
+        var number = num * counter;
+      }
+      numberInput.focus();
+      return number;
+    }
+
+
+
+    function bruttalObj() {
+        for( var i = 0; i < 200; i++){
+          var block = document.createElement('div');
+          block.setAttribute('class','bruttal-divs');
+          document.body.appendChild(block);
+        }
+
+        var blocks = document.querySelectorAll('.bruttal-divs');
+
+        function random(num){
+          return Math.floor(Math.random()*num);
+        }
+
+        function colorBg(){
+          var back = 'rgb('+ random(255)+ ',' + random(255)+ ',' +random(255)+')';
+          return back;
+        }
+
+        for(var j = 0; j < blocks.length; j++){
+          blocks[j].addEventListener('mouseover', function(e){
+            e.target.style.backgroundColor = colorBg();
+          });
+        }
+
+      }
+  bruttalObj();
